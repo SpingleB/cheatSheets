@@ -1,3 +1,5 @@
+/////React/////
+
 const [ isMobile, setIsMobile ] = useState(false)
   
     useEffect(()=> {
@@ -10,3 +12,21 @@ const [ isMobile, setIsMobile ] = useState(false)
   
       return () => window.removeEventListener(`resize`, checkSize);
     }, []);
+
+
+/////Vue/////
+
+const viewportWidth = ref(window.innerWidth)
+    const isImgBig = ref<boolean>(viewportWidth.value > 600)
+
+    function handleResize() {
+    viewportWidth.value = window.innerWidth
+    }
+
+    onMounted(() => {
+    window.addEventListener('resize', handleResize)
+    })
+
+    onUnmounted(() => {
+    window.removeEventListener('resize', handleResize)
+    })
